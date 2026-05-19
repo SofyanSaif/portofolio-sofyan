@@ -1,0 +1,64 @@
+{
+  "profile": {
+    "name": "Sofyan Saif",
+    "bio": "Berawal dari kompetisi Web Creation hingga merancang arsitektur data masa depan. Membangun solusi digital dengan logika yang solid dan antarmuka yang presisi. Serta melanjutkan ke jenjang pendidikan Tinggi di Universitas Dian Nuswantoro sebagai jurusan Ilmu Komputer dengan Program Studi Teknik Informatika.",
+    "profileImage": "/images/sofyan-no-bg.png",
+    "education": "SMK di Semarang",
+    "achievement": "Juara 2 Lomba Membuat Web Tingkat Kota Semarang"
+  },
+  "terminal": [
+    {
+      "command": "whoami",
+      "output": "admin@developer-muda: Aspiring Fullstack & Data Engineer"
+    },
+    {
+      "command": "python run",
+      "output": "> Executing logic_pattern.py...\n1\n2 2\n3 3 3\n4 4 4 4\n5 5 5 5 5\n> Execution completed in 0.012s"
+    }
+  ],
+  "timeline": [
+    {
+      "id": 1,
+      "date": "April 2026",
+      "title": "Juara 2 Web Creation Tingkat Kota",
+      "description": "Memenangkan kompetisi bergengsi tingkat kota di Semarang dalam kategori Web Creation.",
+      "image": "/images/web-creation.jpg",
+      "isHighlight": true
+    },
+    {
+      "id": 2,
+      "date": "Maret 2026",
+      "title": "Riset Machine Learning Madiun",
+      "description": "Membangun model klasifikasi tingkat kesejahteraan menggunakan XGBoost.",
+      "image": "",
+      "isHighlight": false
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Model Klasifikasi Kesejahteraan",
+      "category": "Data Engineering & ML",
+      "description": "Membangun model Machine Learning untuk mengklasifikasikan tingkat kesejahteraan di wilayah Madiun.",
+      "metrics": "Akurasi model meroket dari 67.33% menjadi 75.25%",
+      "techStack": [
+        "Python",
+        "XGBoost",
+        "Random Forest"
+      ],
+      "githubLink": "#"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "url": "/images/cat-1.jpg",
+      "caption": "Kucing oranye bersantai"
+    },
+    {
+      "id": 2,
+      "url": "/images/jeep-adventure.jpg",
+      "caption": "Jeep adventure menyeberang sungai"
+    }
+  ]
+}
