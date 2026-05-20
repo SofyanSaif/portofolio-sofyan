@@ -1,100 +1,134 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-interface TerminalCommand {
-  command: string;
-  output: string;
+interface TerminalLine {
+  text: string;
+  type: 'command' | 'output' | 'welcome';
 }
 
-interface InteractiveTerminalProps {
-  customCommands?: TerminalCommand[];
-}
-
-export default function InteractiveTerminal({ customCommands = [] }: InteractiveTerminalProps) {
-  const [history, setHistory] = useState<{ command: string; output: string | React.ReactNode }[]>([
-    { 
-      command: '', 
-      output: 'Terminal Portfolio v1.0.0\nKetik "help" untuk melihat daftar perintah yang tersedia.' 
-    }
-  ]);
+export default function InteractiveTerminal({ customCommands }: { customCommands?: any }) {
   const [input, setInput] = useState('');
-  const endOfTerminalRef = useRef<HTMLDivElement>(null);
+  const [history, setHistory] = useState<TerminalLine[]>([
+    { text: 'Welcome to Sofyan\'s Logic Playground v1.0.0', type: 'welcome' },
+    { text: 'Type "help" to see available commands.', type: 'welcome' },
+  ]);
+  
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll ke bawah setiap ada baris baru
+  // Memastikan terminal scroll ke bawah HANYA saat ada perintah baru (melindungi dari bug auto-scroll)
   useEffect(() => {
-    endOfTerminalRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (containerRef.current) {
+      // Hanya menggulirkan bagian dalam kotak terminal tanpa menarik layar utama web
+      containerRef.current.scrollTo({
+        top: containerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [history]);
 
-  const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      const cmd = input.trim().toLowerCase();
-      let output: string | React.ReactNode = '';
+  const handleCommand = (cmd: string) => {
+    const trimmedCmd = cmd.trim().toLowerCase();
+    let newLines: TerminalLine[] = [{ text: `guest@sofyan-portfolio:~$ ${cmd}`, type: 'command' }];
 
-      if (cmd === 'help') {
-        // Dinamis mengambil list command dari JSON
-        const availableCmds = customCommands.map(c => `  - ${c.command.padEnd(12)} : (Data dari Admin)`).join('\n');
-        output = `Available commands:\n${availableCmds}\n  - clear        : Bersihkan terminal`;
-      } else if (cmd === 'clear') {
+    if (trimmedCmd === '') {
+      setHistory((prev) => [...prev, ...newLines]);
+      return;
+    }
+
+    switch (trimmedCmd) {
+      case 'help':
+        newLines.push(
+          { text: 'Available commands:', type: 'output' },
+          { text: '  skills   - Display technical stack & core competencies', type: 'output' },
+          { text: '  cat      - Summon a friendly digital companion', type: 'output' },
+          { text: '  clear    - Clear the terminal screen', type: 'output' },
+          { text: '  about    - Brief introduction about this engine', type: 'output' }
+        );
+        break;
+
+      case 'skills':
+        newLines.push(
+          { text: 'Loading core system infrastructure...', type: 'output' },
+          { text: '[■■■■■■■■■■■■■■■■■■■■] 100% Verified.', type: 'output' },
+          { text: '----------------------------------------', type: 'output' },
+          { text: '• Core Languages: C++, Java, PHP, Python, Shell, SQL', type: 'output' },
+          { text: '• Ecosystems:     Next.js, Node.js, Web3 Foundations', type: 'output' },
+          { text: '----------------------------------------', type: 'output' }
+        );
+        break;
+
+      case 'cat':
+        newLines.push(
+          { text: 'Summoning a wild orange cat onto the terminal...', type: 'output' },
+          { text: '   /\\_/\\  ', type: 'output' },
+          { text: '  ( o.o ) ', type: 'output' },
+          { text: '   > ^ <  ', type: 'output' },
+          { text: '"Meow! Meow! Don\'t forget to break between coding sessions!"', type: 'output' }
+        );
+        break;
+
+      case 'clear':
         setHistory([]);
         setInput('');
         return;
-      } else if (cmd === '') {
-        output = '';
-      } else {
-        // CEK APAKAH PERINTAH ADA DI DATABASE JSON KITA
-        const foundCommand = customCommands.find(c => c.command.toLowerCase() === cmd);
-        
-        if (foundCommand) {
-           // Gunakan <pre> agar enter (\n) dari JSON terbaca rapi
-           output = <pre className="font-sans whitespace-pre-wrap">{foundCommand.output}</pre>;
-        } else {
-           output = `Command not found: ${cmd}. Type "help" for available commands.`;
-        }
-      }
 
-      setHistory((prev) => [...prev, { command: input, output }]);
-      setInput('');
+      case 'about':
+        newLines.push(
+          { text: 'Built with Next.js & React. Engineered for logic-based problem solving.', type: 'output' }
+        );
+        break;
+
+      default:
+        newLines.push({ text: `command not found: ${cmd}. Type "help" for valid options.`, type: 'output' });
     }
+
+    setHistory((prev) => [...prev, ...newLines]);
+    setInput('');
   };
 
   return (
-    <div className="bg-black/80 backdrop-blur-md border border-gray-700 rounded-xl overflow-hidden font-mono text-sm shadow-2xl h-64 flex flex-col">
+    <div className="w-full bg-[#0D1117] font-mono text-sm rounded-2xl border border-gray-800 shadow-2xl overflow-hidden">
       {/* Header Terminal */}
-      <div className="bg-gray-800/80 px-4 py-2 flex items-center gap-2 border-b border-gray-700">
-        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="ml-2 text-gray-400 text-xs">guest@portfolio:~</span>
+      <div className="bg-[#161B22] px-4 py-3 flex items-center justify-between border-b border-gray-800">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500/80" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+          <div className="w-3 h-3 rounded-full bg-green-500/80" />
+        </div>
+        <span className="text-gray-500 text-xs select-none">bash - guest@sofyan-portfolio</span>
+        <div className="w-10" />
       </div>
-      
-      {/* Body Terminal */}
-      <div className="p-4 flex-1 overflow-y-auto text-green-400 whitespace-pre-wrap text-left">
-        {history.map((line, index) => (
-          <div key={index} className="mb-2">
-            {line.command && (
-              <div className="flex gap-2">
-                <span className="text-blue-400">➜</span>
-                <span className="text-white">{line.command}</span>
-              </div>
-            )}
-            <div className="text-gray-300 mt-1">{line.output}</div>
+
+      {/* Konten Output Terminal */}
+      <div 
+        ref={containerRef} 
+        className="p-4 h-72 overflow-y-auto flex flex-col gap-1.5 scrollbar-thin scrollbar-thumb-gray-800">
+        {history.map((line, idx) => (
+          <div 
+            key={idx} 
+            className={`whitespace-pre-wrap ${
+              line.type === 'command' ? 'text-white font-semibold' : 
+              line.type === 'welcome' ? 'text-blue-400' : 'text-gray-300'
+            }`}
+          >
+            {line.text}
           </div>
         ))}
         
-        {/* Input Baris Saat Ini */}
-        <div className="flex gap-2 mt-2 items-center">
-          <span className="text-blue-400 font-bold">➜</span>
+        {/* Baris Input Aktif */}
+        <div className="flex items-center gap-2 pt-1">
+          <span className="text-green-500 font-semibold shrink-0">guest@sofyan-portfolio:~$</span>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleCommand}
-            className="flex-1 bg-transparent outline-none text-white focus:ring-0 p-0 border-none"
-            spellCheck={false}
-            autoFocus
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleCommand(input);
+            }}
+            className="bg-transparent text-white outline-none flex-1 border-none p-0 focus:ring-0"
+            placeholder="Type a command..."
           />
         </div>
-        <div ref={endOfTerminalRef} />
       </div>
     </div>
   );

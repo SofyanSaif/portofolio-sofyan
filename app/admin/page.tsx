@@ -30,7 +30,6 @@ export default function AdminDashboard() {
     setFormData((prev: any) => ({ ...prev, profile: { ...prev.profile, [name]: value } }));
   };
 
-  // --- LOGIKA CERDAS: FILE UPLOAD HANDLER ---
   const uploadFile = async (file: File, uploadId: string, callback: (url: string) => void) => {
     setUploadingIndex(uploadId);
     const uploadData = new FormData();
@@ -152,7 +151,7 @@ export default function AdminDashboard() {
             <button type="button" onClick={() => addArrayItem('terminal', { command: '', output: '' })} className="text-xs bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">+ Tambah Command</button>
           </GlassCard>
 
-          {/* 3. SECTION: PROJECTS */}
+          {/* 3. SECTION: PROJECTS DENGAN METRIK LANJUTAN */}
           <GlassCard>
             <h3 className="text-xl font-bold text-blue-400 border-b border-gray-700 pb-2 mb-4">3. Featured Projects</h3>
             {formData.projects?.map((item: any, idx: number) => (
@@ -166,16 +165,25 @@ export default function AdminDashboard() {
                   <input type="text" value={item.category} onChange={(e) => updateArrayItem('projects', idx, 'category', e.target.value)} placeholder="Kategori" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
                 </div>
                 <textarea value={item.description} onChange={(e) => updateArrayItem('projects', idx, 'description', e.target.value)} placeholder="Deskripsi" rows={2} className="w-full bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                   <input type="text" value={item.metrics} onChange={(e) => updateArrayItem('projects', idx, 'metrics', e.target.value)} placeholder="Metrik Keberhasilan" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
-                   <input type="text" value={item.techStack.join(', ')} onChange={(e) => updateArrayItem('projects', idx, 'techStack', e.target.value.split(',').map(s=>s.trim()))} placeholder="Tech Stack (pisahkan dengan koma)" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
+                
+                {/* Input Metrik Kompleks */}
+                <div className="bg-gray-900/50 p-3 rounded border border-gray-700">
+                  <span className="text-xs text-gray-400 block mb-2">Pengaturan Metrik Animasi (Kosongkan jika bukan Machine Learning)</span>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                    <input type="text" value={item.metrics?.label || ''} onChange={(e) => updateArrayItem('projects', idx, 'metrics', {...item.metrics, label: e.target.value})} placeholder="Label (Opsional)" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-1.5 text-white text-xs" />
+                    <input type="number" step="0.01" value={item.metrics?.start ?? ''} onChange={(e) => updateArrayItem('projects', idx, 'metrics', {...item.metrics, start: parseFloat(e.target.value) || 0})} placeholder="Nilai Awal (67.33)" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-1.5 text-white text-xs" />
+                    <input type="number" step="0.01" value={item.metrics?.end ?? ''} onChange={(e) => updateArrayItem('projects', idx, 'metrics', {...item.metrics, end: parseFloat(e.target.value) || 0})} placeholder="Nilai Akhir (75.25)" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-1.5 text-white text-xs" />
+                    <input type="text" value={item.metrics?.suffix || ''} onChange={(e) => updateArrayItem('projects', idx, 'metrics', {...item.metrics, suffix: e.target.value})} placeholder="Akhiran (Misal: %)" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-1.5 text-white text-xs" />
+                  </div>
                 </div>
+
+                <input type="text" value={item.techStack?.join(', ')} onChange={(e) => updateArrayItem('projects', idx, 'techStack', e.target.value.split(',').map(s=>s.trim()))} placeholder="Tech Stack (pisahkan dengan koma)" className="w-full bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
               </div>
             ))}
-            <button type="button" onClick={() => addArrayItem('projects', { id: Date.now(), title: '', category: '', description: '', metrics: '', techStack: [], githubLink: '#' })} className="text-xs bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">+ Tambah Proyek</button>
+            <button type="button" onClick={() => addArrayItem('projects', { id: Date.now(), title: '', category: '', description: '', metrics: null, techStack: [], githubLink: '#' })} className="text-xs bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">+ Tambah Proyek</button>
           </GlassCard>
 
-          {/* 4. SECTION: TIMELINE WITH NATIVE DATE & UPLOAD */}
+          {/* 4. SECTION: TIMELINE DENGAN ACTIVITIES */}
           <GlassCard>
             <h3 className="text-xl font-bold text-blue-400 border-b border-gray-700 pb-2 mb-4">4. Riwayat & Pencapaian</h3>
             {formData.timeline?.map((item: any, idx: number) => (
@@ -185,26 +193,28 @@ export default function AdminDashboard() {
                   <button type="button" onClick={() => removeArrayItem('timeline', idx)} className="text-red-400 text-xs hover:underline">Hapus</button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {/* UPDATE: Menggunakan INPUT TYPE DATE */}
-                  <input type="date" value={item.date} onChange={(e) => updateArrayItem('timeline', idx, 'date', e.target.value)} className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
-                  <input type="text" value={item.title} onChange={(e) => updateArrayItem('timeline', idx, 'title', e.target.value)} placeholder="Judul Pencapaian" className="md:col-span-2 bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
+                  <input type="text" value={item.year} onChange={(e) => updateArrayItem('timeline', idx, 'year', e.target.value)} placeholder="Tahun (Misal: April 2026)" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
+                  <input type="text" value={item.title} onChange={(e) => updateArrayItem('timeline', idx, 'title', e.target.value)} placeholder="Judul Pencapaian" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
+                  <input type="text" value={item.subtitle || ''} onChange={(e) => updateArrayItem('timeline', idx, 'subtitle', e.target.value)} placeholder="Sub-judul / Lokasi" className="bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
                 </div>
-                <textarea value={item.description} onChange={(e) => updateArrayItem('timeline', idx, 'description', e.target.value)} placeholder="Deskripsi Riwayat" rows={2} className="w-full bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                  {/* UPDATE: Direct Upload untuk gambar riwayat */}
+                <textarea value={item.description} onChange={(e) => updateArrayItem('timeline', idx, 'description', e.target.value)} placeholder="Deskripsi Singkat" rows={2} className="w-full bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm" />
+                
+                <textarea value={item.activities?.join('\n') || ''} onChange={(e) => updateArrayItem('timeline', idx, 'activities', e.target.value.split('\n'))} placeholder="Aktivitas (Gunakan tombol Enter untuk baris baru)" rows={3} className="w-full bg-[#1e1e1e] border border-gray-700 rounded px-3 py-2 text-white text-sm font-mono" />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center mt-2 border-t border-gray-700 pt-3">
                   <div>
-                    <label className="block text-xs text-gray-400 mb-1">Gambar Lampiran ({uploadingIndex === `tl-${idx}` ? 'Mengunggah...' : 'Upload File'})</label>
+                    <label className="block text-xs text-gray-400 mb-1">Gambar Bukti / Sertifikat ({uploadingIndex === `tl-${idx}` ? 'Mengunggah...' : 'Upload File'})</label>
                     <input type="file" accept=".jpg,.jpeg,.png" onChange={(e) => e.target.files?.[0] && uploadFile(e.target.files[0], `tl-${idx}`, (url) => updateArrayItem('timeline', idx, 'image', url))} className="w-full bg-[#1e1e1e] border border-gray-700 rounded px-2 py-1 text-xs text-gray-400 file:bg-blue-600 file:text-white file:border-0 file:rounded file:px-2 file:py-0.5" />
                   </div>
-                  <label className="flex items-center gap-2 text-gray-400 text-sm mt-4 cursor-pointer">
-                    <input type="checkbox" checked={item.isHighlight} onChange={(e) => updateArrayItem('timeline', idx, 'isHighlight', e.target.checked)} className="w-4 h-4 accent-blue-500" />
-                    Aktifkan Highlight Efek Menyala
+                  <label className="flex items-center gap-2 text-yellow-400 text-sm mt-4 cursor-pointer font-bold">
+                    <input type="checkbox" checked={item.highlight || false} onChange={(e) => updateArrayItem('timeline', idx, 'highlight', e.target.checked)} className="w-4 h-4 accent-yellow-500" />
+                    Aktifkan Highlight (Piala Emas)
                   </label>
                 </div>
               </div>
             ))}
-            <button type="button" onClick={() => addArrayItem('timeline', { id: Date.now(), date: '', title: '', description: '', image: '', isHighlight: false })} className="text-xs bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">+ Tambah Riwayat</button>
+            <button type="button" onClick={() => addArrayItem('timeline', { id: Date.now(), year: '', title: '', subtitle: '', description: '', activities: [], image: '', highlight: false })} className="text-xs bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">+ Tambah Riwayat</button>
           </GlassCard>
 
           {/* 5. SECTION: GALLERY WITH UPLOAD */}

@@ -10,8 +10,28 @@ import ProjectCard from '@/components/ui/ProjectCard';
 export default function Portfolio() {
   const [data, setData] = useState<any>(null);
   const [typedText, setTypedText] = useState('');
-  
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
   useEffect(() => {
+    const handleScroll = () => {
+      // Tombol akan muncul jika layar di-scroll lebih dari 300px ke bawah
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
     fetch('/api/portfolio')
       .then((res) => res.json())
       .then((data) => setData(data));
@@ -134,7 +154,7 @@ export default function Portfolio() {
       <SectionContainer id="experience" className="relative z-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">Riwayat & Pencapaian</h2>
         <GlassCard>
-          <Timeline items={data.timeline} />
+           {data && data.timeline && <Timeline data={data.timeline} />}
         </GlassCard>
       </SectionContainer>
 
@@ -143,6 +163,21 @@ export default function Portfolio() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">Life Outside Code</h2>
         <MasonryGallery images={data.gallery} />
       </SectionContainer>
+      
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 md:bottom-12 md:right-12 p-3 md:p-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all duration-500 z-50 flex items-center justify-center ${
+          showBackToTop 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-12 pointer-events-none'
+        }`}
+        aria-label="Kembali ke atas"
+      >
+        {/* Ikon Panah ke Atas (SVG) */}
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
 
     </main>
   );

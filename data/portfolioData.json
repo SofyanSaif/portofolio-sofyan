@@ -19,32 +19,53 @@
   "timeline": [
     {
       "id": 1,
-      "date": "April 2026",
+      "year": "April 2026",
       "title": "Juara 2 Web Creation Tingkat Kota",
-      "description": "Memenangkan kompetisi bergengsi tingkat kota di Semarang dalam kategori Web Creation.",
-      "image": "/images/web-creation.jpg",
-      "isHighlight": true
+      "subtitle": "Semarang, Jawa Tengah",
+      "description": "Memenangkan kompetisi bergengsi tingkat kota dalam kategori Web Creation.",
+      "image": "/images/1779284012283-IMG-20201217-WA0018.jpg",
+      "highlight": true,
+      "activities": [
+        "Activities and Societies: Berpartisipasi dalam lomba Membuat Web Tingkat Kota Semarang dan berhasil meraih Juara 2."
+      ]
     },
     {
       "id": 2,
-      "date": "Maret 2026",
+      "year": "Maret 2026",
       "title": "Riset Machine Learning Madiun",
-      "description": "Membangun model klasifikasi tingkat kesejahteraan menggunakan XGBoost.",
-      "image": "",
-      "isHighlight": false
+      "subtitle": "Madiun, Jawa Timur",
+      "description": "Membangun model klasifikasi tingkat kesejahteraan menggunakan algoritma ensemble learning.",
+      "image": "/images/1779284021674-WhatsApp-Image-2026-04-27-at-22.35.52.jpeg",
+      "highlight": false,
+      "activities": [
+        "Menggunakan algoritma XGBoost dan Random Forest untuk klasifikasi.",
+        "Berhasil melakukan optimasi arsitektur data dan meningkatkan akurasi model dari 67.33% menjadi 75.25%."
+      ]
     }
   ],
   "projects": [
     {
       "id": 1,
-      "title": "Model Klasifikasi Kesejahteraan",
-      "category": "Data Engineering & ML",
-      "description": "Membangun model Machine Learning untuk mengklasifikasikan tingkat kesejahteraan di wilayah Madiun.",
-      "metrics": "Akurasi model meroket dari 67.33% menjadi 75.25%",
+      "title": "Klasifikasi Kesejahteraan Wilayah Madiun",
+      "category": "Machine Learning Research",
+      "description": "Membangun model klasifikasi analitik untuk memetakan tingkat kesejahteraan menggunakan ensemble learning. Melakukan tuning pada arsitektur data untuk meningkatkan performa secara signifikan.",
+      "techStack": ["Python", "XGBoost", "Random Forest", "Scikit-Learn", "Pandas"],
+      "metrics": {
+        "label": "Model Accuracy Optimization",
+        "start": 67.33,
+        "end": 75.25,
+        "suffix": "%"
+      }
+    },
+    {
+      "id": 1779283915321,
+      "title": "Sistem Kasir berbasis Laravel",
+      "category": "Web Developer",
+      "description": "Membangun Aplikasi Kasir berbasis Web dengan integrasi ke Mobile",
+      "metrics": "CRUD",
       "techStack": [
-        "Python",
-        "XGBoost",
-        "Random Forest"
+        "Laravel",
+        "PostgreSQL"
       ],
       "githubLink": "#"
     }
@@ -59,6 +80,16 @@
       "id": 2,
       "url": "/images/jeep-adventure.jpg",
       "caption": "Jeep adventure menyeberang sungai"
+    },
+    {
+      "id": 1779284023946,
+      "url": "/images/1779284035173-20211024113145__MG_0058.jpg",
+      "caption": "Berpose di Malioboro"
+    },
+    {
+      "id": 1779286304806,
+      "url": "/images/1779286312116-fcac9117eb7a4112bccf7f23f43a1d9e.jpg",
+      "caption": "Foto Candid"
     }
   ]
 }
