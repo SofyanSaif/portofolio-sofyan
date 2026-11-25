@@ -1,184 +1,285 @@
-'use client';
-import { useEffect, useState } from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import SectionContainer from '@/components/ui/SectionContainer';
 import GlassCard from '@/components/ui/GlassCard';
-import Timeline from '@/components/ui/Timeline';
-import MasonryGallery from '@/components/ui/MasonryGallery';
+import HeroTyping from '@/components/HeroTyping';
+import ProjectsFilter from '@/components/ProjectsFilter';
+import BackToTop from '@/components/BackToTop';
 import InteractiveTerminal from '@/components/ui/InteractiveTerminal';
-import ProjectCard from '@/components/ui/ProjectCard';
+import MasonryGallery from '@/components/ui/MasonryGallery';
+import AboutSection from '@/components/AboutSection';
+import EducationSection from '@/components/EducationSection';
+import ExperienceSection from '@/components/ExperienceSection';
+import CertificatesSection from '@/components/CertificatesSection';
+import ContactSection from '@/components/ContactSection';
+import { getPortfolioData } from '@/lib/getPortfolioData';
+import {
+  Sparkles,
+  Phone,
+  Mail,
+  MapPin,
+  Layers
+} from 'lucide-react';
+import { Github, Linkedin, Instagram } from '@/components/ui/BrandIcons';
 
 export default function Portfolio() {
-  const [data, setData] = useState<any>(null);
-  const [typedText, setTypedText] = useState('');
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const data = getPortfolioData();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Tombol akan muncul jika layar di-scroll lebih dari 300px ke bawah
-      if (window.scrollY > 300) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-    };
+  if (!data) {
+    return (
+      <div className="min-h-screen bg-[#121212] flex items-center justify-center text-gray-400 font-mono">
+        Konfigurasi data portofolio tidak ditemukan.
+      </div>
+    );
+  }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    fetch('/api/portfolio')
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
-
-  useEffect(() => {
-    if (!data?.profile?.name) return;
-    const fullText = `Hello, World. I'm ${data.profile.name}`;
-    setTypedText(''); 
-    let index = 0;
-    const interval = setInterval(() => {
-      setTypedText(fullText.slice(0, index + 1));
-      index++;
-      if (index >= fullText.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-  }, [data]);
-
-  if (!data) return <div className="min-h-screen bg-[#121212] flex items-center justify-center text-gray-400 font-mono">Loading Config...</div>;
+  const { profile, about, contact, education, experience, certificates, projects, gallery, terminal } = data;
 
   return (
-    <main className="min-h-screen bg-[#121212] text-gray-200 font-sans overflow-x-hidden relative">
-      
-      {/* ANIMATED BACKGROUND */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/10 rounded-full blur-[120px] animate-pulse pointer-events-none duration-[8000ms]" />
-      <div className="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] bg-purple-600/5 rounded-full blur-[150px] animate-bounce pointer-events-none duration-[12000ms]" />
+    <div className="min-h-screen text-gray-200 font-sans overflow-x-hidden relative flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+      {/* --- TOP NAVBAR --- */}
+      <Navbar name={profile?.name} />
 
-      {/* --- HERO SECTION --- */}
-      <SectionContainer className="pt-32 pb-16 relative z-10">
-        {/* PERUBAHAN 1: Menggunakan items-stretch agar tinggi kiri dan kanan sama persis */}
-        <div className="flex flex-col-reverse md:flex-row items-stretch justify-between gap-12">
-          
-          {/* PERUBAHAN 2: Kolom Teks (Kiri) menggunakan flex-col dan justify-between */}
-          <div className="flex-1 text-center md:text-left flex flex-col justify-between py-2">
-            
-            {/* Grup Atas (Teks) */}
-            <div>
-              <h1 className="text-4xl md:text-6xl font-mono font-bold mb-6 tracking-tight h-[120px] md:h-[180px] text-white">
-                {typedText.includes("I'm") ? (
-                  <>
-                    Hello, World. <br />
-                    I'm <span className="text-blue-500 font-sans">{typedText.substring(typedText.indexOf("I'm") + 4)}</span>
-                  </>
-                ) : (
-                  typedText
-                )}
-                {/* INI KURSORNYA: Stabil dan kebal re-render */}
-                <span className="text-blue-500 animate-blink ml-1 font-light">_</span>
-              </h1>
-              <p className="text-gray-400 max-w-2xl text-base md:text-lg mb-8 leading-relaxed">
-                {data.profile.bio}
-              </p>
+      <main className="relative z-10 flex-1">
+        {/* =================================================================
+            HERO SECTION
+        ================================================================= */}
+        <SectionContainer className="pt-28 sm:pt-36 pb-16 md:pb-24">
+          <div className="flex flex-col-reverse lg:flex-row items-center lg:items-stretch justify-between gap-10 lg:gap-14">
+            {/* Left Content Column */}
+            <div className="flex-1 text-center lg:text-left flex flex-col justify-between py-2">
+              <div>
+                {/* Status chip */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono mb-6">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>{profile?.status || 'Available for freelance & projects'}</span>
+                </div>
+
+                {/* Animated Typing Header (Micro Client Island) */}
+                <HeroTyping name={profile?.name} />
+
+                {/* Subtitle / Headline */}
+                <p className="text-blue-400 font-medium text-sm sm:text-base md:text-lg mb-3">
+                  {profile?.headline || 'Fullstack Developer & Aspiring Machine Learning Engineer'}
+                </p>
+
+                {/* Short Bio */}
+                <p className="text-gray-400 max-w-2xl text-sm sm:text-base md:text-lg mb-8 leading-relaxed mx-auto lg:mx-0">
+                  {profile?.bio}
+                </p>
+
+                {/* Social Quick-Bar on Hero */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+                  {contact?.github && (
+                    <a
+                      href={contact.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gray-500 text-gray-300 hover:text-white transition-all"
+                      title="GitHub"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                  )}
+                  {contact?.linkedin && (
+                    <a
+                      href={contact.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 text-blue-400 hover:text-blue-300 transition-all"
+                      title="LinkedIn"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                  )}
+                  {contact?.instagram && (
+                    <a
+                      href={contact.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-pink-500/50 text-pink-400 hover:text-pink-300 transition-all"
+                      title="Instagram"
+                    >
+                      <Instagram className="w-4 h-4" />
+                    </a>
+                  )}
+                  {contact?.email && (
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 text-gray-300 hover:text-white transition-all flex items-center gap-2 text-xs"
+                      title="Email"
+                    >
+                      <Mail className="w-4 h-4 text-blue-400" />
+                      <span className="hidden sm:inline font-mono">{contact.email}</span>
+                    </a>
+                  )}
+                  {contact?.phone && (
+                    <a
+                      href={`https://wa.me/${contact.whatsapp || contact.phone.replace(/[^0-9]/g, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/50 text-emerald-400 transition-all flex items-center gap-2 text-xs"
+                      title="WhatsApp"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span className="hidden sm:inline font-mono">{contact.phone}</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                <a
+                  href="#projects"
+                  className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm shadow-[0_0_20px_rgba(59,130,246,0.35)] hover:shadow-[0_0_25px_rgba(59,130,246,0.55)] transition-all transform hover:-translate-y-0.5"
+                >
+                  Lihat Proyek Unggulan
+                </a>
+                <a
+                  href="#contact"
+                  className="px-6 py-3.5 rounded-xl border border-gray-700 hover:border-gray-400 text-gray-200 hover:text-white font-medium text-sm bg-white/5 hover:bg-white/10 transition-all transform hover:-translate-y-0.5"
+                >
+                  Hubungi Saya
+                </a>
+                <a
+                  href="#playground"
+                  className="px-5 py-3.5 rounded-xl border border-gray-800 hover:border-yellow-500/50 text-gray-300 hover:text-yellow-400 font-medium text-sm transition-all"
+                >
+                  Coba Terminal &gt;_
+                </a>
+              </div>
             </div>
-            
-            {/* Grup Bawah (Tombol) - Akan otomatis terdorong sejajar dengan bawah foto */}
-            <div className="flex justify-center md:justify-start gap-4">
-              <a href="#projects" className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all">
-                Lihat Proyek
-              </a>
-              <a href="#playground" className="px-6 py-3 rounded-xl border border-gray-600 hover:border-white text-gray-300 font-medium transition-all">
-                Coba Terminal
-              </a>
+
+            {/* Right Photo Column */}
+            <div className="relative w-64 sm:w-72 md:w-80 h-[360px] sm:h-[420px] lg:h-auto shrink-0 flex flex-col p-2 group">
+              {/* Outer Glow */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-purple-600/30 rounded-[2.5rem] blur-[50px] opacity-70 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+              {/* Cyber Frame */}
+              <div className="absolute inset-0 border-2 border-gray-700/80 rounded-[2.5rem] bg-gradient-to-b from-blue-950/20 via-gray-900/60 to-gray-950 pointer-events-none z-0 shadow-2xl overflow-hidden backdrop-blur-xs">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+              </div>
+
+              {/* Profile Image with async decoding */}
+              <img
+                src={profile?.profileImage || '/images/sofyan-no-bg.png'}
+                alt={profile?.name || 'Sofyan Saif'}
+                decoding="async"
+                className="relative z-10 w-full h-full flex-1 object-cover rounded-[2.2rem] transition-transform duration-700 group-hover:scale-105"
+              />
+
+              {/* Floating Meta Tag */}
+              <div className="absolute bottom-4 left-4 right-4 z-20 p-3 rounded-2xl bg-[#161616]/90 backdrop-blur-md border border-white/10 flex items-center justify-between shadow-xl">
+                <div>
+                  <span className="text-white font-bold text-xs block">{profile?.name}</span>
+                  <span className="text-gray-400 text-[11px] font-mono flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-blue-400" />
+                    {profile?.location || 'Semarang, Jawa Tengah'}
+                  </span>
+                </div>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+              </div>
             </div>
           </div>
+        </SectionContainer>
 
-          {/* PERUBAHAN 3: KOTAK FOTO (Kanan) - Akan melar otomatis mengikuti tinggi kolom teks */}
-          <div className="relative w-64 h-[350px] md:w-[320px] md:h-auto shrink-0 mt-8 md:mt-0 flex flex-col p-2 group">
-            
-            {/* Aura Glow di luar kartu */}
-            <div className="absolute inset-0 bg-blue-500 rounded-[2rem] blur-[60px] opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity duration-500"></div>
+        {/* =================================================================
+            ABOUT & SKILLS SECTION
+        ================================================================= */}
+        <SectionContainer id="about" className="py-16 md:py-24">
+          <AboutSection about={about} profile={profile} />
+        </SectionContainer>
 
-            {/* Bingkai Utama */}
-            <div className="absolute inset-0 border-4 border-gray-800 rounded-[2rem] bg-gradient-to-b from-blue-900/10 to-gray-900 pointer-events-none z-0 shadow-2xl overflow-hidden">
-               <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        {/* =================================================================
+            EDUCATION SECTION
+        ================================================================= */}
+        <SectionContainer id="education" className="py-16 md:py-24">
+          <EducationSection education={education} />
+        </SectionContainer>
+
+        {/* =================================================================
+            EXPERIENCE SECTION
+        ================================================================= */}
+        <SectionContainer id="experience" className="py-16 md:py-24">
+          <ExperienceSection experience={experience} />
+        </SectionContainer>
+
+        {/* =================================================================
+            FEATURED PROJECTS SECTION WITH FILTER TABS (CLIENT COMPONENT)
+        ================================================================= */}
+        <SectionContainer id="projects" className="py-16 md:py-24">
+          <div className="mb-10">
+            <div className="flex items-center gap-2 text-blue-400 font-mono text-xs uppercase tracking-widest mb-2">
+              <Layers className="w-4 h-4" />
+              <span>Karya & Implementasi</span>
             </div>
-
-            {/* Gambar Profil Sofyan */}
-            <img 
-              src={data.profile.profileImage} 
-              alt={data.profile.name} 
-              className="relative z-10 w-full h-full flex-1 object-cover rounded-[1.75rem] transition-transform duration-500 hover:scale-105"
-            />
-            
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
+              <span className="text-blue-500 font-mono">{"</>"}</span>
+              <span>Featured Projects</span>
+            </h2>
           </div>
 
-        </div>
-      </SectionContainer>
+          <ProjectsFilter projects={projects || []} />
+        </SectionContainer>
 
-      {/* --- LOGIC PLAYGROUND --- */}
-      <SectionContainer id="playground" className="relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white flex items-center gap-3">
-          <span className="text-yellow-500">{">_"}</span> Logic Playground
-        </h2>
-        <GlassCard className="p-0 overflow-hidden border-gray-700/50">
-          <InteractiveTerminal customCommands={data.terminal} />
-        </GlassCard>
-      </SectionContainer>
+        {/* =================================================================
+            CERTIFICATES SECTION
+        ================================================================= */}
+        <SectionContainer id="certificates" className="py-16 md:py-24">
+          <CertificatesSection certificates={certificates} />
+        </SectionContainer>
 
-      {/* --- FEATURED PROJECTS --- */}
-      <SectionContainer id="projects" className="relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white flex items-center gap-3">
-          <span className="text-blue-500">{"</>"}</span> Featured Projects
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {data.projects?.map((project: any) => (
-            <ProjectCard 
-              key={project.id}
-              title={project.title}
-              category={project.category}
-              description={project.description}
-              metrics={project.metrics}
-              techStack={project.techStack}
-              githubLink={project.githubLink}
-            />
-          ))}
-        </div>
-      </SectionContainer>
+        {/* =================================================================
+            LOGIC PLAYGROUND (INTERACTIVE TERMINAL)
+        ================================================================= */}
+        <SectionContainer id="playground" className="py-16 md:py-24">
+          <div className="mb-6">
+            <div className="flex items-center gap-2 text-yellow-400 font-mono text-xs uppercase tracking-widest mb-2">
+              <Sparkles className="w-4 h-4" />
+              <span>Simulasi Interaktif</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
+              <span className="text-yellow-500 font-mono">{">_"}</span>
+              <span>Logic Playground</span>
+            </h2>
+            <p className="text-gray-400 text-sm mt-1">
+              Ketik perintah seperti <code className="text-yellow-400 bg-yellow-950/40 px-1.5 py-0.5 rounded">help</code>, <code className="text-yellow-400 bg-yellow-950/40 px-1.5 py-0.5 rounded">skills</code>, <code className="text-yellow-400 bg-yellow-950/40 px-1.5 py-0.5 rounded">education</code>, atau <code className="text-yellow-400 bg-yellow-950/40 px-1.5 py-0.5 rounded">contact</code>.
+            </p>
+          </div>
+          <GlassCard className="p-0 overflow-hidden border-gray-700/50">
+            <InteractiveTerminal customCommands={terminal} />
+          </GlassCard>
+        </SectionContainer>
 
-      {/* --- TIMELINE --- */}
-      <SectionContainer id="experience" className="relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">Riwayat & Pencapaian</h2>
-        <GlassCard>
-           {data && data.timeline && <Timeline data={data.timeline} />}
-        </GlassCard>
-      </SectionContainer>
+        {/* =================================================================
+            GALLERY SECTION (LIFE OUTSIDE CODE)
+        ================================================================= */}
+        <SectionContainer id="gallery" className="py-16 md:py-24">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              Life Outside Code
+            </h2>
+            <p className="text-gray-400 text-sm">
+              Momen perjalanan, petualangan, dan hobi di luar jam coding.
+            </p>
+          </div>
+          <MasonryGallery images={gallery} />
+        </SectionContainer>
 
-      {/* --- GALLERY --- */}
-      <SectionContainer id="gallery" className="relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">Life Outside Code</h2>
-        <MasonryGallery images={data.gallery} />
-      </SectionContainer>
-      
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 md:bottom-12 md:right-12 p-3 md:p-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all duration-500 z-50 flex items-center justify-center ${
-          showBackToTop 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-12 pointer-events-none'
-        }`}
-        aria-label="Kembali ke atas"
-      >
-        {/* Ikon Panah ke Atas (SVG) */}
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-      </button>
+        {/* =================================================================
+            CONTACT SECTION
+        ================================================================= */}
+        <SectionContainer id="contact" className="py-16 md:py-24">
+          <ContactSection contact={contact} profileName={profile?.name} />
+        </SectionContainer>
+      </main>
 
-    </main>
+      {/* --- FOOTER --- */}
+      <Footer profile={profile} contact={contact} />
+
+      {/* --- FLOATING BACK TO TOP BUTTON (MICRO CLIENT ISLAND) --- */}
+      <BackToTop />
+    </div>
   );
 }

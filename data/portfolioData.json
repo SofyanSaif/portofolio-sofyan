@@ -1,46 +1,394 @@
 {
   "profile": {
     "name": "Sofyan Saif",
-    "bio": "Berawal dari kompetisi Web Creation hingga merancang arsitektur data masa depan. Membangun solusi digital dengan logika yang solid dan antarmuka yang presisi. Serta melanjutkan ke jenjang pendidikan Tinggi di Universitas Dian Nuswantoro sebagai jurusan Ilmu Komputer dengan Program Studi Teknik Informatika.",
+    "headline": "Associate Data Scientist & Fullstack Developer",
+    "bio": "Berawal dari SMK Palapa Semarang hingga merancang arsitektur machine learning dan perangkat lunak modern di Universitas Dian Nuswantoro (UDINUS). Membangun solusi komputasi dengan fondasi logika yang kokoh, antarmuka yang presisi, dan pemodelan data teruji.",
     "profileImage": "/images/sofyan-no-bg.png",
-    "education": "SMK di Semarang",
-    "achievement": "Juara 2 Lomba Membuat Web Tingkat Kota Semarang"
+    "status": "Terbuka untuk Kolaborasi & Proyek",
+    "location": "Semarang, Jawa Tengah, Indonesia",
+    "resumeUrl": "#",
+    "education": "Universitas Dian Nuswantoro (2022–2026)",
+    "achievement": "Associate Data Scientist Certification (UDINUS / BNSP)"
   },
-  "terminal": [
-    {
-      "command": "whoami",
-      "output": "admin@developer-muda: Aspiring Fullstack & Data Engineer"
-    },
-    {
-      "command": "python run",
-      "output": "> Executing logic_pattern.py...\n1\n2 2\n3 3 3\n4 4 4 4\n5 5 5 5 5\n> Execution completed in 0.012s"
-    }
-  ],
-  "timeline": [
+  "contact": {
+    "phone": "0878-6046-2909",
+    "email": "saif.levi@gmail.com",
+    "whatsapp": "6287860462909",
+    "github": "https://github.com/SofyanSaif",
+    "instagram": "https://www.instagram.com/sofyansaif_/",
+    "linkedin": "https://www.linkedin.com/in/sofyansaif2214006",
+    "location": "Semarang, Jawa Tengah, Indonesia"
+  },
+  "about": {
+    "headline": "Membangun Solusi Digital dengan Logika Solid & Presisi Tinggi",
+    "story": "Halo! Saya Sofyan Saif, seorang mahasiswa Teknik Informatika di Universitas Dian Nuswantoro (2022–2026) dengan sertifikasi Associate Data Scientist (BNSP). Perjalanan komputasi saya berakar dari SMK Palapa Semarang (2019–2022), di mana saya pertama kali mengasah logika pemrograman dan memenangkan Juara 2 Lomba Membuat Web Tingkat Kota Semarang.\n\nFokus saya terbentang pada irisan Machine Learning Engineering dan Fullstack Web Development. Saya telah menyelesaikan rangkaian spesialisasi Dicoding Indonesia mencakup Deep Learning, Applied Machine Learning, Data Processing, SQL, hingga arsitektur web modern untuk membangun sistem komputasi yang scalable dan bermanfaat nyata.",
+    "stats": [
+      {
+        "id": 1,
+        "label": "Tahun Pengalaman",
+        "value": "3+"
+      },
+      {
+        "id": 2,
+        "label": "Sertifikasi Resmi",
+        "value": "15+"
+      },
+      {
+        "id": 3,
+        "label": "Proyek Selesai",
+        "value": "12+"
+      },
+      {
+        "id": 4,
+        "label": "Teknologi Dikuasai",
+        "value": "15+"
+      }
+    ],
+    "skills": [
+      {
+        "category": "Data Science & Machine Learning",
+        "items": [
+          "Python",
+          "Machine Learning",
+          "Deep Learning",
+          "Applied ML",
+          "Data Processing",
+          "Data Visualization",
+          "XGBoost",
+          "Scikit-Learn",
+          "SQL"
+        ]
+      },
+      {
+        "category": "Frontend Development",
+        "items": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "HTML5 & Modern CSS",
+          "Responsive UI/UX"
+        ]
+      },
+      {
+        "category": "Backend & Database",
+        "items": [
+          "Laravel",
+          "PHP",
+          "PostgreSQL",
+          "MySQL",
+          "RESTful APIs",
+          "Node.js"
+        ]
+      },
+      {
+        "category": "Tools & Workflow",
+        "items": [
+          "Git & GitHub",
+          "Linux / Bash",
+          "Postman",
+          "VS Code",
+          "Vercel",
+          "Figma"
+        ]
+      }
+    ]
+  },
+  "education": [
     {
       "id": 1,
-      "year": "April 2026",
-      "title": "Juara 2 Web Creation Tingkat Kota",
-      "subtitle": "Semarang, Jawa Tengah",
-      "description": "Memenangkan kompetisi bergengsi tingkat kota dalam kategori Web Creation.",
-      "image": "/images/1779284012283-IMG-20201217-WA0018.jpg",
-      "highlight": true,
-      "activities": [
-        "Activities and Societies: Berpartisipasi dalam lomba Membuat Web Tingkat Kota Semarang dan berhasil meraih Juara 2."
+      "institution": "Universitas Dian Nuswantoro",
+      "degree": "S1 Teknik Informatika",
+      "field": "Fakultas Ilmu Komputer",
+      "period": "2022–2026",
+      "location": "Semarang, Jawa Tengah",
+      "gpa": "3.85 / 4.00",
+      "description": "Mendalami rekayasa perangkat lunak, struktur data, kecerdasan buatan, pemrosesan data analitik, dan perancangan sistem terdistribusi.",
+      "badge": "Mahasiswa Aktif (2022–2026)",
+      "highlights": [
+        "Associate Data Scientist Certified (Fakultas Ilmu Komputer UDINUS / BNSP).",
+        "Fokus riset machine learning ensemble dan perancangan sistem web performan tinggi."
       ]
     },
     {
       "id": 2,
-      "year": "Maret 2026",
-      "title": "Riset Machine Learning Madiun",
-      "subtitle": "Madiun, Jawa Timur",
-      "description": "Membangun model klasifikasi tingkat kesejahteraan menggunakan algoritma ensemble learning.",
-      "image": "/images/1779284021674-WhatsApp-Image-2026-04-27-at-22.35.52.jpeg",
-      "highlight": false,
-      "activities": [
-        "Menggunakan algoritma XGBoost dan Random Forest untuk klasifikasi.",
-        "Berhasil melakukan optimasi arsitektur data dan meningkatkan akurasi model dari 67.33% menjadi 75.25%."
+      "institution": "SMK Palapa Semarang",
+      "degree": "Sekolah Menengah Kejuruan",
+      "field": "Rekayasa Perangkat Lunak (RPL)",
+      "period": "2019–2022",
+      "location": "Semarang, Jawa Tengah",
+      "gpa": "Lulusan Berprestasi",
+      "description": "Fondasi algoritma pemrograman, logika komputasi, pembuatan antarmuka web, perancangan basis data, dan pemrograman berorientasi objek.",
+      "badge": "Alumni (2019–2022)",
+      "highlights": [
+        "Juara 2 Lomba Membuat Web Tingkat Kota Semarang.",
+        "Aktif dalam pengembangan proyek web sekolah dan komunitas coding."
       ]
+    }
+  ],
+  "experience": [
+    {
+      "id": 3,
+      "role": "IT Specialist Intern",
+      "company": "RSUP Dr. Kariadi Semarang",
+      "period": "2026 - Sekarang",
+      "type": "Internship / Healthcare IT",
+      "location": "Semarang, Jawa Tengah",
+      "description": "Menjalani program magang sebagai IT Specialist dalam operasional teknologi informasi rumah sakit rujukan nasional, pengelolaan sistem informasi manajemen rumah sakit, dan pemeliharaan infrastruktur teknologi layanan kesehatan.",
+      "achievements": [
+        "Mendukung optimalisasi dan monitoring kelancaran Sistem Informasi Manajemen Rumah Sakit (SIMRS) dalam alur pelayanan medis harian.",
+        "Membantu pemeliharaan integritas database medis, troubleshooting sistem operasional, dan infrastruktur jaringan rumah sakit.",
+        "Berkolaborasi dengan tim IT internal dalam integrasi layanan digital dan kepatuhan standar keamanan data medis."
+      ],
+      "technologies": [
+        "SIMRS",
+        "SQL / Database",
+        "Network Infrastructure",
+        "System Troubleshooting",
+        "Healthcare IT"
+      ]
+    },
+    {
+      "id": 1,
+      "role": "Machine Learning & Data Researcher",
+      "company": "Proyek Riset Analitik Wilayah Madiun",
+      "period": "Jan 2026 - Apr 2026",
+      "type": "Research / Project",
+      "location": "Madiun & Remote",
+      "description": "Merancang model klasifikasi machine learning berbasis ensemble untuk memetakan status kesejahteraan masyarakat berdasarkan indikator sosial-ekonomi.",
+      "achievements": [
+        "Melakukan preprocessing dataset, pembersihan missing values, dan feature engineering pada ratusan variabel data.",
+        "Mengembangkan model ensemble menggabungkan XGBoost dan Random Forest Classifier.",
+        "Meningkatkan akurasi klasifikasi secara signifikan dari 67.33% menjadi 75.25% melalui tuning arsitektur data."
+      ],
+      "technologies": [
+        "Python",
+        "XGBoost",
+        "Random Forest",
+        "Scikit-Learn",
+        "Pandas",
+        "Matplotlib"
+      ]
+    },
+    {
+      "id": 2,
+      "role": "Fullstack Web Developer",
+      "company": "Sistem Kasir & Manajemen POS",
+      "period": "2025 - 2026",
+      "type": "Freelance / Web Application",
+      "location": "Semarang",
+      "description": "Membangun sistem kasir berbasis web dengan integrasi mobile yang responsif, manajemen transaksi cepat, dan inventaris produk.",
+      "achievements": [
+        "Membangun RESTful API dengan Laravel dan database PostgreSQL yang aman dan scalable.",
+        "Mengimplementasikan antarmuka responsif ramah perangkat mobile, tablet, hingga layar desktop kasir.",
+        "Menyediakan fitur manajemen katalog produk, kalkulasi diskon otomatis, dan ekspor laporan transaksi bulanan."
+      ],
+      "technologies": [
+        "Laravel",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "JavaScript",
+        "REST API"
+      ]
+    },
+    {
+      "id": 4,
+      "role": "IT Intern / Data Management Specialist",
+      "company": "SMPN 12 Pekalongan",
+      "period": "2024 - 2025",
+      "type": "Internship / Education IT",
+      "location": "Pekalongan, Jawa Tengah",
+      "description": "Melaksanakan magang sebagai IT Intern & Data Management Specialist dalam tata kelola data akademik sekolah, pemeliharaan sistem pendataan pendidikan, serta infrastruktur teknologi informasi laboratorium komputer.",
+      "achievements": [
+        "Mengelola verifikasi, pemutakhiran, dan pengarsipan data akademik siswa serta tenaga pendidik secara terstruktur dan akurat.",
+        "Mendukung pemeliharaan sistem data pokok pendidikan (Dapodik), manajemen jaringan laboratorium, dan kesiapan sistem ujian berbasis komputer (CBT).",
+        "Melakukan pemeliharaan berkala perangkat keras, instalasi software edukasi, dan troubleshooting perangkat komputasi sekolah."
+      ],
+      "technologies": [
+        "Data Management",
+        "Database Administration",
+        "Dapodik System",
+        "Computer Networking",
+        "Troubleshooting"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "title": "Associate Data Scientist Certification",
+      "issuer": "Faculty of Computer Science, Universitas Dian Nuswantoro / National Professional Certification Agency (BNSP)",
+      "issueDate": "2026",
+      "credentialId": "62015 2511 5 009814 2026",
+      "credentialUrl": "#",
+      "image": "",
+      "category": "Sertifikasi Profesi Nasional (BNSP)",
+      "description": "Sertifikasi kompetensi resmi Associate Data Scientist mencakup data collection, exploratory data analysis, data preparation, modeling machine learning, dan evaluasi hasil analitik."
+    },
+    {
+      "id": 2,
+      "title": "Juara 2 Lomba Membuat Web Tingkat Kota Semarang",
+      "issuer": "Pemerintah Kota Semarang",
+      "issueDate": "April 2021",
+      "credentialId": "SEM-WEB-2021-02",
+      "credentialUrl": "#",
+      "image": "/images/1779284012283-IMG-20201217-WA0018.jpg",
+      "category": "Penghargaan Kompetisi",
+      "description": "Berhasil meraih posisi Juara 2 dalam ajang kompetisi Web Creation tingkat Kota Semarang dengan penilaian desain antarmuka, fungsionalitas, dan responsivitas."
+    },
+    {
+      "id": 3,
+      "title": "Applied Machine Learning",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "EYX4G4QW5ZDL",
+      "credentialUrl": "https://www.dicoding.com/certificates/EYX4G4QW5ZDL",
+      "image": "",
+      "category": "Machine Learning",
+      "description": "Penerapan machine learning lanjutan pada masalah nyata, model ensemble, hyperparameter tuning, dan integrasi pipeline data."
+    },
+    {
+      "id": 4,
+      "title": "Learning the Fundamentals of Deep Learning",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "1RXYE5J6QZVM",
+      "credentialUrl": "https://www.dicoding.com/certificates/1RXYE5J6QZVM",
+      "image": "",
+      "category": "Deep Learning",
+      "description": "Pemahaman arsitektur jaringan saraf tiruan (neural networks), backpropagation, activation functions, dan implementasi deep learning."
+    },
+    {
+      "id": 5,
+      "title": "Learning Machine Learning for Beginners",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "KEXL7W64RXG2",
+      "credentialUrl": "https://www.dicoding.com/certificates/KEXL7W64RXG2",
+      "image": "",
+      "category": "Machine Learning",
+      "description": "Fondasi algoritma supervised dan unsupervised learning, regresi linier, klasifikasi, decision trees, serta evaluasi model."
+    },
+    {
+      "id": 6,
+      "title": "Learning the Fundamentals of Data Processing",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "2VX3KQ9NJXYQ",
+      "credentialUrl": "https://www.dicoding.com/certificates/2VX3KQ9NJXYQ",
+      "image": "",
+      "category": "Data Science",
+      "description": "Teknik pembersihan data (data cleaning), transformasi data, penanganan missing values, dan feature engineering pada dataset tabular."
+    },
+    {
+      "id": 7,
+      "title": "Learning the Basics of Data Visualization",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "07Z6334VYZQR",
+      "credentialUrl": "https://www.dicoding.com/certificates/07Z6334VYZQR",
+      "image": "",
+      "category": "Data Visualization",
+      "description": "Visualisasi data analitik yang efektif, eksplorasi pola visual, perancangan grafik statistik, dan komunikasi wawasan data."
+    },
+    {
+      "id": 8,
+      "title": "Learning the Basics of AI",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "1RXYELV69ZVM",
+      "credentialUrl": "https://www.dicoding.com/certificates/1RXYELV69ZVM",
+      "image": "",
+      "category": "Artificial Intelligence",
+      "description": "Prinsip dasar kecerdasan buatan, penalaran mesin, representasi pengetahuan, dan aplikasi modern AI."
+    },
+    {
+      "id": 9,
+      "title": "AI Literacy for Everyone: Understand, Apply, Create",
+      "issuer": "BASS Training Center & Consultant.",
+      "issueDate": "2025",
+      "credentialId": "CERT-UFGCXYAZKM6O",
+      "credentialUrl": "#",
+      "image": "",
+      "category": "Artificial Intelligence",
+      "description": "Literasi kecerdasan buatan, etika AI, pemanfaatan model generatif, dan penerapan praktis AI dalam produktivitas."
+    },
+    {
+      "id": 10,
+      "title": "Getting Started with Python Programming",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": " QLZ936L2EZ5D",
+      "credentialUrl": "https://www.dicoding.com/certificates/QLZ936L2EZ5D",
+      "image": "",
+      "category": "Programming",
+      "description": "Sintaks dasar Python, struktur data (list, dict, tuple), fungsi, modul, dan manipulasi data berorientasi objek."
+    },
+    {
+      "id": 11,
+      "title": "Learning the Basics of Structured Query Language (SQL)",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "QLZ933D9MZ5D",
+      "credentialUrl": "https://www.dicoding.com/certificates/QLZ933D9MZ5D",
+      "image": "",
+      "category": "Database & SQL",
+      "description": "Query database relasional, DDL/DML, agregasi, subqueries, dan perancangan relasi antar tabel (JOINs)."
+    },
+    {
+      "id": 12,
+      "title": "Getting Started with Programming for Software Development",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "N9ZO9OR18XG5",
+      "credentialUrl": "https://www.dicoding.com/certificates/N9ZO9OR18XG5",
+      "image": "",
+      "category": "Software Engineering",
+      "description": "Prinsip rekayasa perangkat lunak, siklus hidup pengembangan sistem (SDLC), clean code, dan problem solving."
+    },
+    {
+      "id": 13,
+      "title": "Introduction to Programming Logic (Programming Logic 101)",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "0LZ0R6EK3P65",
+      "credentialUrl": "https://www.dicoding.com/certificates/0LZ0R6EK3P65",
+      "image": "",
+      "category": "Programming Logic",
+      "description": "Konsep logika komputasi, percabangan, perulangan, algoritma dasar, dan pemecahan masalah algoritma terstruktur."
+    },
+    {
+      "id": 14,
+      "title": "Learning the Basics of Git with GitHub",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "6RPNR1NOQX2M",
+      "credentialUrl": "https://www.dicoding.com/certificates/6RPNR1NOQX2M",
+      "image": "",
+      "category": "Developer Tools",
+      "description": "Version control system, branching, merging, conflict resolution, dan alur kerja kolaboratif menggunakan GitHub."
+    },
+    {
+      "id": 15,
+      "title": "Financial Literacy 101",
+      "issuer": "Dicoding Indonesia",
+      "issueDate": "2025",
+      "credentialId": "72ZD53GDJZYW",
+      "credentialUrl": "https://www.dicoding.com/certificates/72ZD53GDJZYW",
+      "image": "",
+      "category": "Professional Literacy",
+      "description": "Dasar-dasar literasi finansial, alokasi anggaran, manajemen risiko keuangan, dan perencanaan jangka panjang."
+    },
+    {
+      "id": 16,
+      "title": "IT Career Guidance Workshop",
+      "issuer": "Fakultas Ilmu Komputer Universitas Dian Nuswantoro",
+      "issueDate": "2026",
+      "credentialId": "0114/G.12/UDN-02/1/2026",
+      "credentialUrl": "#",
+      "image": "",
+      "category": "Career Workshop",
+      "description": "Workshop pemetaan jalur karir industri teknologi informasi, standar industri, kesiapan profesional, dan personal branding."
     }
   ],
   "projects": [
@@ -49,25 +397,63 @@
       "title": "Klasifikasi Kesejahteraan Wilayah Madiun",
       "category": "Machine Learning Research",
       "description": "Membangun model klasifikasi analitik untuk memetakan tingkat kesejahteraan menggunakan ensemble learning. Melakukan tuning pada arsitektur data untuk meningkatkan performa secara signifikan.",
-      "techStack": ["Python", "XGBoost", "Random Forest", "Scikit-Learn", "Pandas"],
+      "techStack": [
+        "Python",
+        "XGBoost",
+        "Random Forest",
+        "Scikit-Learn",
+        "Pandas"
+      ],
       "metrics": {
         "label": "Model Accuracy Optimization",
         "start": 67.33,
         "end": 75.25,
         "suffix": "%"
-      }
+      },
+      "githubLink": "https://github.com/SofyanSaif",
+      "demoLink": ""
     },
     {
       "id": 1779283915321,
       "title": "Sistem Kasir berbasis Laravel",
       "category": "Web Developer",
-      "description": "Membangun Aplikasi Kasir berbasis Web dengan integrasi ke Mobile",
-      "metrics": "CRUD",
+      "description": "Membangun Aplikasi Kasir berbasis Web dengan integrasi ke Mobile, manajemen transaksi cepat, cetak nota, dan dashboard penjualan.",
+      "metrics": {
+        "label": "Transaksional Latensi Rendah",
+        "start": 0,
+        "end": 100,
+        "suffix": "% Ready"
+      },
       "techStack": [
         "Laravel",
-        "PostgreSQL"
+        "PostgreSQL",
+        "Tailwind CSS",
+        "REST API"
       ],
-      "githubLink": "#"
+      "githubLink": "https://github.com/SofyanSaif",
+      "demoLink": ""
+    }
+  ],
+  "terminal": [
+    {
+      "command": "whoami",
+      "output": "admin@sofyan-portfolio: Sofyan Saif - Associate Data Scientist & Fullstack Developer"
+    },
+    {
+      "command": "python run",
+      "output": "> Executing logic_pattern.py...\n1\n2 2\n3 3 3\n4 4 4 4\n5 5 5 5 5\n> Execution completed in 0.012s"
+    },
+    {
+      "command": "education",
+      "output": "• Universitas Dian Nuswantoro (UDINUS) - S1 Teknik Informatika (2022–2026)\n• SMK Palapa Semarang - Rekayasa Perangkat Lunak (2019–2022)"
+    },
+    {
+      "command": "contact",
+      "output": "• Email: saif.levi@gmail.com\n• Phone/WA: 0878-6046-2909\n• GitHub: github.com/SofyanSaif\n• LinkedIn: linkedin.com/in/sofyansaif2214006\n• Instagram: instagram.com/sofyansaif_"
+    },
+    {
+      "command": "experience",
+      "output": "• RSUP Dr. Kariadi Semarang - IT Specialist Intern (2026 - Sekarang)\n• Riset ML Madiun - Machine Learning Researcher (2026)\n• POS Cashier Web App - Fullstack Web Developer (2025 - 2026)\n• SMPN 12 Pekalongan - IT Intern / Data Management Specialist (2024 - 2025)"
     }
   ],
   "gallery": [
@@ -90,6 +476,33 @@
       "id": 1779286304806,
       "url": "/images/1779286312116-fcac9117eb7a4112bccf7f23f43a1d9e.jpg",
       "caption": "Foto Candid"
+    }
+  ],
+  "timeline": [
+    {
+      "id": 1,
+      "year": "April 2021",
+      "title": "Juara 2 Web Creation Tingkat Kota",
+      "subtitle": "Semarang, Jawa Tengah",
+      "description": "Memenangkan kompetisi bergengsi tingkat kota dalam kategori Web Creation mewakili SMK Palapa Semarang.",
+      "image": "/images/1779284012283-IMG-20201217-WA0018.jpg",
+      "highlight": true,
+      "activities": [
+        "Berpartisipasi dalam lomba Membuat Web Tingkat Kota Semarang dan berhasil meraih Juara 2."
+      ]
+    },
+    {
+      "id": 2,
+      "year": "Maret 2026",
+      "title": "Riset Machine Learning Madiun",
+      "subtitle": "Madiun, Jawa Timur",
+      "description": "Membangun model klasifikasi tingkat kesejahteraan menggunakan algoritma ensemble learning.",
+      "image": "/images/1779284021674-WhatsApp-Image-2026-04-27-at-22.35.52.jpeg",
+      "highlight": false,
+      "activities": [
+        "Menggunakan algoritma XGBoost dan Random Forest untuk klasifikasi.",
+        "Berhasil melakukan optimasi arsitektur data dan meningkatkan akurasi model dari 67.33% menjadi 75.25%."
+      ]
     }
   ]
 }
